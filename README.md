@@ -1,73 +1,122 @@
-# Welcome to your Lovable project
+# YouWoAI Course System - Interactive Mockup
 
-## Project info
+> **Team 22 - StitchUp** | CSC301 Winter 2026
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Live Prototype
 
-## How can I edit this code?
+**URL**: https://youwoai.lovable.app/
 
-There are several ways of editing your application.
+This is the interactive mockup for the YouWoAI Course System MVP, demonstrating all 6 user stories.
 
-**Use Lovable**
+## Features Demonstrated
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+### Student Features
+- **Student Dashboard** (`/student`) - View enrolled courses with progress tracking
+- **Course Detail** (`/student/course/:id`) - Chapter list, quiz results, AI tutor access
+- **Chapter Content** (`/student/course/:courseId/chapter/:chapterId`) - Content viewer with AI chat
+- **Take Quiz** (`/student/course/:courseId/chapter/:chapterId/quiz`) - Interactive quiz with results
 
-Changes made via Lovable will be committed automatically to this repo.
+### Instructor Features
+- **Instructor Dashboard** (`/instructor`) - Student progress monitoring, analytics
+- **Create Course** (`/instructor/create-course`) - 4-step wizard with drag-and-drop chapter ordering
+- **Course Settings** (`/instructor/course/:id/settings`) - Invite code management, student list
+- **Generate Quiz** (`/instructor/course/:id/chapter/:chapterId/generate-quiz`) - AI quiz generation
 
-**Use your preferred IDE**
+## User Stories Covered
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+1. **US1: Course Creation** - Instructors create courses from folders/notes
+2. **US2: Student Enrollment** - Invite code based enrollment system
+3. **US3: Course Content Access** - Students view chapters with AI chat
+4. **US4: Progress Tracking (Student)** - Progress bars, quiz scores, continue functionality
+5. **US5: Progress Dashboard (Instructor)** - Student table with sorting, filtering, CSV export
+6. **US6: AI Quiz Generation** - Multiple question types with source citations
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Technology Stack
 
-Follow these steps:
+- **Vite** - Build tool and dev server
+- **TypeScript** - Type-safe JavaScript
+- **React** - UI framework
+- **React Router** - Client-side routing
+- **shadcn/ui** - UI component library
+- **Tailwind CSS** - Utility-first CSS framework
+- **@hello-pangea/dnd** - Drag and drop for chapter reordering
+- **@tanstack/react-query** - Data fetching and caching
+
+## Local Development
+
+### Prerequisites
+- Node.js 18+ (install with [nvm](https://github.com/nvm-sh/nvm#installing-and-updating))
+- npm or bun
+
+### Setup
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Clone the repository
+git clone https://github.com/csc301-2026-s/project-22-YouWoAI.git
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate to mockup directory
+cd project-22-YouWoAI/deliverables/D1/mockup-app
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app will be available at `http://localhost:5173`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Available Scripts
 
-**Use GitHub Codespaces**
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build |
+| `npm run lint` | Run ESLint |
+| `npm run test` | Run tests with Vitest |
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Project Structure
 
-## What technologies are used for this project?
+```
+src/
+  components/
+    chat/           # AI chat panel
+    course/         # Course cards, chapter items, join modal
+    instructor/     # Stat cards, student table
+    layout/         # Header, mobile nav
+    ui/             # shadcn/ui components
+  data/
+    mockData.ts     # Sample data for prototype
+  hooks/            # Custom React hooks
+  lib/              # Utility functions
+  pages/
+    student/        # Student-facing pages
+    instructor/     # Instructor-facing pages
+  App.tsx           # Route definitions
+  main.tsx          # Entry point
+```
 
-This project is built with:
+## Deployment
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+The prototype is deployed via Lovable.dev at https://youwoai.lovable.app/
 
-## How can I deploy this project?
+To deploy updates:
+1. Push changes to the repository
+2. Lovable automatically rebuilds and deploys
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## Related Documentation
 
-## Can I connect a custom domain to my Lovable project?
+- [Planning Document](../planning.md) - Full project specification
+- [Mockup Document](../mockup.md) - Wireframes and architecture diagrams
+- [Lovable Prompt](../lovable-prompt.md) - Original prototype specifications
 
-Yes, you can!
+## Team
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- Muhammad Enrizky Brillian - Machine Learning Developer
+- Robert Haughton - Full-Stack Developer
+- Minseok Jang - Full-Stack Developer
+- Yusheng Li - Frontend Developer
+- Darryl Lubin - Full-Stack Developer
+- Christian Kevin Sidharta - Frontend Developer
+- Christian Jason Sumitro - Machine Learning Developer
