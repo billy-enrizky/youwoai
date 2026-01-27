@@ -24,9 +24,35 @@ export default function InstructorDashboard() {
   const currentCourse = instructorCourses.find((c) => c.id === selectedCourse);
 
   const handleExportCSV = () => {
+    // Generate CSV content from student data
+    const headers = ["Name", "Email", "Progress (%)", "Average Score (%)", "Last Active", "At Risk"];
+    const csvRows = [
+      headers.join(","),
+      ...courseStudents.map(student => [
+        `"${student.name}"`,
+        student.email,
+        student.progress,
+        student.avgScore,
+        `"${student.lastActive}"`,
+        student.atRisk ? "Yes" : "No"
+      ].join(","))
+    ];
+    const csvContent = csvRows.join("\n");
+
+    // Create blob and download
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", `${currentCourse?.title || "course"}-students-${new Date().toISOString().split("T")[0]}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+
     toast({
-      title: "Exporting data...",
-      description: "Your CSV file will download shortly.",
+      title: "Export complete!",
+      description: "Student progress data has been downloaded as CSV.",
     });
   };
 
