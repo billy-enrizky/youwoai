@@ -141,7 +141,7 @@ export default function GenerateQuiz() {
       title: "Quiz saved!",
       description: "The quiz has been saved and is ready for students.",
     });
-    navigate(`/instructor/course/${id}/settings`);
+    navigate(`/instructor/course/${id}`);
   };
 
   const getTypeBadgeColor = (type: string) => {
@@ -164,11 +164,11 @@ export default function GenerateQuiz() {
       <main className="container px-4 py-6 md:px-6 md:py-8 max-w-3xl">
         {/* Back Button */}
         <Link
-          to={`/instructor/course/${id}/settings`}
+          to={`/instructor/course/${id}`}
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6 transition-colors"
         >
           <ArrowLeft className="h-4 w-4" />
-          Back to Settings
+          Back to Course
         </Link>
 
         <div className="space-y-6">
