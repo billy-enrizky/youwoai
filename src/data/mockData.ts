@@ -34,6 +34,33 @@ export interface ChatMessage {
   citation?: string;
 }
 
+export interface ProposalChapter {
+  id: string;
+  title: string;
+  summary: string;
+  topics: string[];
+  estimatedMinutes: number;
+  sourcePages: number[];
+}
+
+export interface CourseProposal {
+  title: string;
+  description: string;
+  chapters: ProposalChapter[];
+  metadata: {
+    generatedAt: string;
+    sourceDocuments: string[];
+  };
+}
+
+export interface AIFeature {
+  id: string;
+  title: string;
+  description: string;
+  status: 'available' | 'coming_soon';
+  estimatedTime: string;
+}
+
 export const studentCourses: Course[] = [
   {
     id: "1",
@@ -131,3 +158,85 @@ export const courseStats = {
   averageScore: "74%",
   atRiskStudents: 5
 };
+
+export const sampleCourseProposal: CourseProposal = {
+  title: "Introduction to Software Engineering",
+  description: "A comprehensive course covering fundamental software engineering principles, methodologies, and best practices for building scalable applications.",
+  chapters: [
+    {
+      id: "1",
+      title: "Introduction to Software Engineering",
+      summary: "Overview of software engineering principles, history, and importance in modern development.",
+      topics: ["Software lifecycle", "Engineering principles", "Industry overview"],
+      estimatedMinutes: 45,
+      sourcePages: [1, 15]
+    },
+    {
+      id: "2",
+      title: "Agile Development Methodology",
+      summary: "Understanding agile principles, Scrum framework, and iterative development practices.",
+      topics: ["Agile manifesto", "Scrum", "Sprint planning", "User stories"],
+      estimatedMinutes: 60,
+      sourcePages: [16, 35]
+    },
+    {
+      id: "3",
+      title: "Version Control with Git",
+      summary: "Mastering Git for collaborative development, branching strategies, and code management.",
+      topics: ["Git basics", "Branching", "Merging", "Pull requests"],
+      estimatedMinutes: 50,
+      sourcePages: [36, 52]
+    },
+    {
+      id: "4",
+      title: "Software Testing Strategies",
+      summary: "Comprehensive testing approaches including unit, integration, and end-to-end testing.",
+      topics: ["Unit testing", "Integration testing", "TDD", "Test coverage"],
+      estimatedMinutes: 55,
+      sourcePages: [53, 70]
+    },
+    {
+      id: "5",
+      title: "Design Patterns Overview",
+      summary: "Common design patterns and their applications in software architecture.",
+      topics: ["Creational patterns", "Structural patterns", "Behavioral patterns"],
+      estimatedMinutes: 65,
+      sourcePages: [71, 95]
+    }
+  ],
+  metadata: {
+    generatedAt: new Date().toISOString(),
+    sourceDocuments: ["software-engineering-textbook.pdf", "agile-guide.pdf"]
+  }
+};
+
+export const aiFeatures: AIFeature[] = [
+  {
+    id: "ppt",
+    title: "AI PowerPoint",
+    description: "Generate presentation slides from chapter content with customizable templates.",
+    status: "available",
+    estimatedTime: "2-3 min"
+  },
+  {
+    id: "podcast",
+    title: "AI Podcast",
+    description: "Create audio content with two AI voices discussing the chapter material.",
+    status: "coming_soon",
+    estimatedTime: "5-10 min"
+  },
+  {
+    id: "mindmap",
+    title: "AI MindMap",
+    description: "Generate interactive knowledge graphs visualizing chapter concepts.",
+    status: "coming_soon",
+    estimatedTime: "1-2 min"
+  },
+  {
+    id: "video",
+    title: "AI Video",
+    description: "Create video explanations with visual aids from chapter content.",
+    status: "coming_soon",
+    estimatedTime: "10-15 min"
+  }
+];
